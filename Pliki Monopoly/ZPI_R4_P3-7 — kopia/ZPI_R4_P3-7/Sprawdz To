@@ -1,0 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class KartySzans : MonoBehaviour
+{
+
+    private void OnCollisionStay2D(Collision2D collision)
+    { 
+        new public void Plac(Fundusze Update)
+    { 
+        posiadane_pieniadze = posiadane_pieniadze + 200;
+    }
+
+    }
+}

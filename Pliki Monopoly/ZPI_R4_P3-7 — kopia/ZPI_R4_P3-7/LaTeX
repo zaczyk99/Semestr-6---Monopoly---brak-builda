@@ -1,0 +1,804 @@
+\documentclass{article}
+\usepackage[polish]{babel}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{tabularx}
+
+\title{Zespołowe Przedsięwzięcie Inżynierskie - Gra typu Monopoly}
+\author{
+  Zaczyk Bartłomiej\\
+  \and
+  Twardowska Monika\\
+  }
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Temat}
+Stworzenie gry planszowej w technologii 3D w oparciu o zasady popularnego "Monopoly"
+\section{Tytuł Roboczy}
+Eurobiznes
+\section{Cel Aplikacji}
+Nasza aplikacja ma za zadanie pozwolić grupie przyjaciół zagrać wspólnie w grę w stylu “Monopoly” bez planszy, pionków czy brakujących banknotów. Gra ma przynieść przyjemność graczom jakie niesie ze sobą ta kultowa gra planszowa, która bawi pokolenia. W wyznaczonym czasie nasza aplikacja ma posiadać działające funkcje gry oraz być grywalna w trybie wieloosobowym.
+
+\section{Zakres}
+\subsection{Analiza Wymagań}
+
+-gra musi mieć możliwość trybu dla 2, 3, 4, 5 i 6 graczy\newline
+-system rzutu kością ma być losowy\newline
+-system ruchu pionków\newline
+-gra ma posiadać warstwę wizualną i audio\newline
+-gra ma zezwalać na wybór czy chcemy zakupić miasta\newline
+-możliwość zakupów budynków\newline
+-możliwość sprzedaży miast\newline
+-możliwość sprzedaży budynków\newline
+-możliwość pożyczki z banku\newline
+-możliwość spłaty pożyczki\newline
+-system pójścia do więzienia\newline
+-system wyjścia z więzienia\newline
+-możliwość zachowania karty wyjścia z więzienia\newline
+-ciągnięcie kart szans w pełni losowy\newline
+-kara za stanięcie na pola opłat lub na pola innych graczy\newline
+-bonusy za stanięcie na polu bezpłatnego parkingu\newline
+-system dodawania 2mln za przejście przez start\newline
+
+\includegraphics[width=1\textwidth]{poglądowy.png}
+
+
+\subsection{Lista zadań}
+ *Funkcjonalne \newline
+ - Gracz może decydować czy chce zakupić dane pole czy też nie \newline
+ - Gracz może rzucic kostką\newline
+ - Gracz może decydować w dowolnym momencie o zakupie budowli\newline
+ - Gracz może w dowolnym momencie sprzedać nieruchomości i miasta\newline
+ - Gracz może w momencie pobytu w więzieniu użyć karty "wyjścia z więzienia"\newline
+ - System pokazuje wyciągnięte karty szans i kas społecznych \newline
+ - System pozwala na podgląd posiadanych miast przez gracza oraz informacji o mieście\newline
+ - Gracz ma dostęp do wzięcia pożyczki\newline
+ - Gracz ma możliwość spłacania pożyczki\newline
+ - 
+
+\newline
+ *Niefunkcjonalne\newline
+- system nie pozwala pozostałym graczom na kradzież dóbr innych graczy\newline
+- system płynnie wykonuje następne ruchy zgodnie z kolejką graczy oraz wykonuje poprawne interakcje na danych polach planszy\newline
+- koniec gry dla graczy, którzy zgodnie z regułami przegrali\newline
+- omijanie kolejki jeśli gracz jest w więzieniu\newline
+- system dokonuje wydarzeń na nieinteraktywncyh polach takich jak karty szans i kas społecznych\newline
+- system zarządza pieniędzmi graczam, opłaty, przejście przez start, karty szans...\newline
+- system posiada warstwę wizualną\newline
+- system posiada warstwę audio
+
+
+
+\subsection{Diagram przypadków użycia oraz Diagram przepływu}
+
+\includegraphics[width=1\textwidth]{Diagram.drawio.png}
+\includegraphics[width=1\textwidth]{Diagram (1).png}
+
+\subsection{Dobór technologii}
+
+    Blender - wolne i otwarte oprogramowanie do modelowania i renderowania obrazów oraz animacji trójwymiarowych o niekonwencjonalnym interfejsie użytkownika. Umożliwia także tworzenie prezentacji interaktywnych na własnym silniku graficznym. \newline\newline
+    C\# - to nowoczesny, zorientowany obiektowo język programowania. Język C\# umożliwia deweloperom tworzenie wielu typów bezpiecznych i niezawodnych aplikacji uruchamianych na .NET. Język C\# ma swoje korzenie w rodzinie języków C. Jest to język który jest wykorzystywany przez Unity\newline\newline
+    Unity - jest to  zintegrowane środowisko do tworzenia gier komputerowych, materiałów interaktywnych, takich jak wizualizacje czy animacje w wersji dwuwymiarowej oraz trójwymiarowej . Dzięki temu iż działa na najpopularniejszych  systemach operacyjnym takich jak Microsoft Windows, macOS oraz Linux  możemy pozwolić na  tworzenie aplikacji na przeglądarki internetowe, komputery osobiste, konsole gier wideo oraz urządzenia mobilne.
+\section{Scenariusze}
+.
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 1 \\
+ \hline
+ Tytuł  & Tworzenie gry \\
+\hline
+Aktor  & System,Gracz  \\
+\hline
+Warunki wejściowe & Brak \\
+\hline
+Przebieg  & 1. Gracz wchodzi do menu gry \\
+          & 2. Wybiera z menu opcję “Utwórz grę” \\
+          & 3.Wybiera styl gry oraz ilość gracz \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz czeka aż pozostałe osoby dołączą do rozgrywki. \\
+\hline
+Zakończenie altwernatywne nr.1 & Rozgrywka nie utworzyła się, wróć do punktu 2.      \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 2 \\
+ \hline
+ Tytuł  & Rozpoczęcie gry. \\
+\hline
+Aktor  & System,Gracze  \\
+\hline
+Warunki wejściowe  & Gracz utworzył rozgrywkę  \\
+\hline
+Przebieg  & 1.Gracz wchodzi do menu gry. \\
+          &  2. Wybiera z menu opcję “Dołącz do gry” \\ 
+          &  3. Czeka na pozostałych graczy. \\
+   
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Rozgrywka rozpoczyna się po dołączeniu ostatniego gracza. \\
+  
+\hline
+Zakończenie alternatywne nr.1  & Gracz nie może dołączyć do rozgrywki. Wróć do punktu 2. \\ 
+\hline
+Zakończenie alternatywne nr.2  & Gra rozpoczyna się z większą ilością  graczy niż dozwolono. Idź do scenariusza Zakończ rozgrywkę \\
+\hline
+Zakończenie alternatywne nr.3  & Gra rozpoczyna się z mniejszą ilością  graczy niż dozwolono. Idź do scenariusza  \rightarrow scenariusz nr 20 \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 3 \\
+ \hline
+ Tytuł  & Rzut kością. \\
+\hline
+Aktor  & System,Gracze  \\
+\hline
+Warunki wejściowe  & Gracz rozpoczął rozgrywkę.  \\
+\hline
+Przebieg  & 1. Na początku rozgrywki każdy gracz rzuca dwiema kośćmi, aby dowiedzieć się jakie ma miejsce w kolejce. \\
+& 2. Gracz z największą liczbą oczek zaczyna kolejkę, a z najmniejszą ją kończ. \\
+& 3. Gracz w swojej kolejce rzuca dwiema sześciennymi kośćmi, aby poruszyć pionkiem na odpowiednie pole. \\ 
+
+   
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz może poruszyć się o wyznaczoną liczbę oczek. \\
+  
+\hline
+
+Zakończenie alternatywne nr.1  & W przypadku gry na kostkach jest identyczna liczba oczek patrz \rightarrow scenariusz 4.\\ 
+\hline
+Zakończenie alternatywne nr.2 & Gracz nie może poruszyć się o wyznaczoną liczbę oczek, wróć do punktu 3 lub patrz \rightarrow scenariusz 18. \\
+
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 4 \\
+ \hline
+ Tytuł  & Double rzut. \\
+\hline
+Aktor  & System,Gracze  \\
+\hline
+Warunki wejściowe  & Gracz rzucił identyczną liczbę oczek..  \\
+\hline
+Przebieg  & 1. Gracz rzuca kośćmi jeszcze raz, nie podejmując wtedy interakcji na polu, na którym się zatrzymał. \\ 
+
+   
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz zakończy swoją kolejkę na wyznaczonym polu planszy.
+ \\
+  
+\hline
+
+Zakończenie alternatywne nr.1  & Gracz wyrzucił ponownie identyczną liczbę oczek na dwóch kostkach. Wykonaj rzut kośćmi jeszcze raz.\\ 
+\hline
+Zakończenie alternatywne nr.2 & Gracz po raz trzeci wyrzucił identyczną liczbę liczbę oczek, zgodnie z regułami gracz idzie do więzienia. Wykonaj \rightarrow scenariusz 18. \\
+
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 5 \\
+ \hline
+ Tytuł  & Przejście przez pole Start. \\
+\hline
+Aktor  & Bank,Gracze  \\
+\hline
+Warunki wejściowe  & Gracz wykonał okrążenie planszy..  \\
+\hline
+Przebieg  & 1. Gracz podczas swojej kolejki przekroczył pole pod nazwą “Start”. \\ 
+
+   
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz dostaje z Banku wyznaczoną ilość pieniędzy, za przekroczenie pola START.\\
+
+  
+\hline
+
+Zakończenie alternatywne nr.1  & Gracz w celu udania się do więzienia przekracza pole start - pieniądze nie są mu wypłacane.\\ 
+ \hline
+ Zakończenie alternatywne nr.2 & Jeśli nie ma pieniędzy w banku przejdź do scenariusza nr.22 \\
+
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 6 \\
+ \hline
+ Tytuł  & Wylosowanie pola z kartą szansy \\
+\hline
+Aktor  & System,Bank  \\
+\hline
+Warunki wejściowe  & Rzut kością wyznaczające odpowiednie pole  \\
+\hline
+Przebieg  & System odsłania górne polecenie ze stosu "Kart Szans" i wykonuje instrukcje  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Konto jednego lub wielu graczy zostaje zmienione o określoną wartość  \\
+\hline
+Zakończenie alternatywne nr.1  & Wylosowano kartę "Wyjście z więzienia" 	\rightarrow scenariusz nr 19  \\
+\hline
+ 
+ Zakończenie alternatywne nr.2 & Jeśli nie ma pieniędzy w banku przejdź do scenariusza nr.22 \\
+ \hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 7 \\
+ \hline
+ Tytuł  & Wylosowanie pola z kasą społeczną \\
+\hline
+Aktor  & System,Bank  \\
+\hline
+Warunki wejściowe  & Rzut kością wyznaczające odpowiednie pole  \\
+\hline
+Przebieg  & System odsłania górne polecenie ze stosu "Kasy społecznej" i wykonuje instrukcje  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Konto jednego lub wielu graczy zostaje zmienione o określoną wartość  \\
+ \hline
+ Zakończenie alternatywne & Jeśli nie ma pieniędzy w banku przejdź do scenariusza nr.22 \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 8 \\
+ \hline
+ Tytuł  & Opłaty za postój na polu \\
+\hline
+Aktor  & System,Bank  \\
+\hline
+Warunki wejściowe  & Rzut kością wyznaczające odpowiednie pole  \\
+\hline
+Przebieg  & Bank pobiera określoną ilość z konta gracza i przekazuje ją do banku  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz traci określoną sumę pieniędzy  \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 9 \\
+ \hline
+ Tytuł  & Zakup pola \\
+\hline
+Aktor  & System,Bank,Gracz  \\
+\hline
+Warunki wejściowe  & Pionek gracza stanął na polu oznaczonym nazwą miasta  \\
+\hline
+Przebieg  & Gracz dostaje możliwość zakupu pola za określoną kwotę  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Z konta gracza zostaje skaosowana określona ilość pieniędzy, w dane pole/miasto zostaje przypisane do niego  \\
+\hline
+Zakończenie alternatywne nr.1 & Pole jest w posiadaniu przez innego gracza \rightarrow przejdź do scenariusza X \\
+\hline
+ Zakończenie alternatywne nr.2 & Pole jest już w posiadaniu aktualnego gracza \rightarrow przejdź do scenariusza X \\
+ \hline
+ Zakończenie alternatywne nr.3 & Gracz nie decyduje się na zakup pola \rightarrow nie rób nic \\ 
+ \hline
+ MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 10 \\
+ \hline
+ Tytuł  & Sprzedaż pola \\
+\hline
+Aktor  & Gracz,Bank  \\
+\hline
+Warunki wejściowe  & Podczas tury gracza, Gracz posiada chociaż jedno niezabudowane pole  \\
+\hline
+Przebieg  & Gracz wybiera swoje niezabudowane pole i sprzedaje je za kwotę określoną na karcie  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz traci kartę miasta, a jego konto zostaje zwiększone o określoną sumę  \\
+ \hline
+ Zakończenie alternatywne & Jeśli nie ma pieniędzy w banku przejdź do scenariusza nr.22 \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 11 \\
+ \hline
+ Tytuł  & Stanięcie na polu innego gracza \\
+\hline
+Aktor  & System,Bank  \\
+\hline
+Warunki wejściowe  & Rzut kością wyznaczające odpowiednie pole  \\
+\hline
+Przebieg  &  Gracz płaci pieniądze innemu graczowi  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Licznik pieniędzy jednego gracza zwiększa się o ilość straconych pieniędzy przez drugiego gracza określoną przez kwotę na karcie  \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 12 \\
+ \hline
+ Tytuł  & Kupowanie domów \\
+\hline
+Aktor  & System,Bank,Gracz  \\
+\hline
+Warunki wejściowe  & Posiadanie wszystkich miast danego koloru  \\
+\hline
+Przebieg  &  Gracz płaci pieniądze do banku i buduje dom na wybranym przez siebie polu. Koszt zakupu jest określony na karcie miasta  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Licznik pieniędzy jednego gracza zmniejsza się, a pole miasta zyskuje określoną ilość domów  \\
+ \hline
+ Zakończenie alternatywne & Jeśli nie ma wolnych budynków przejdź do scenariusza nr.21 \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+  
+ \hline
+ Nr. Scenariusza & 13 \\
+ \hline
+ Tytuł  & Kupowanie hoteli \\
+\hline
+Aktor  & System,Bank,Gracz  \\
+\hline
+Warunki wejściowe  & Posiadanie wszystkich miast danego koloru oraz na każdym z tych miast 4 budynków \\
+\hline
+Przebieg  &  Gracz płaci pieniądze do banku, usuwa domki z pola miasta i stawia hotel. Koszt zakupu jest określony na karcie miasta  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Licznik pieniędzy jednego gracza zmniejsza się, pole traci domki i zyskuje hotel  \\
+ \hline
+ Zakończenie alternatywne & Jeśli nie ma wolnych budynków przejdź do scenariusza nr.21 \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 14 \\
+ \hline
+ Tytuł  & Sprzedaż budynków \\
+\hline
+Aktor  & Gracz,Bank  \\
+\hline
+Warunki wejściowe  & Gracz posiada budynki  \\
+\hline
+Przebieg  & Gracz wybiera swoje pole z budynkami i sprzedaje określoną ilość za określoną na karcie cenę  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz zyskuje pieniądzę na konto, a pole traci budynki  \\
+ \hline
+ Zakończenie alternatywne & Jeśli nie ma pieniędzy w banku przejdź do scenariusza nr.22 \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 15 \\
+ \hline
+ Tytuł  & Pożyczka z banku \\
+\hline
+Aktor  & Gracz,Bank  \\
+\hline
+Warunki wejściowe  & Brak  \\
+\hline
+Przebieg  & Gracz wybiera kwotę do pożyczki, jego konto zostaje zwiększone o podaną kwotę, a konto dłużnika zostaje zwiękoszone o podaną kwotę + 10procent jej wartości  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz zyskuje pieniądzę oraz powiększa swoje konto dłużnika  \\
+ \hline
+ Zakończenie alternatywne & Jeśli nie ma pieniędzy w banku przejdź do scenariusza nr.22 \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 16 \\
+ \hline
+ Tytuł  & Postój Musik \\
+\hline
+Aktor  & Gracz,Bank,System  \\
+\hline
+Warunki wejściowe  & Gracz staje na polu bezpłatny parking \\
+\hline
+Przebieg  & Gracz otrzymuje pieniądze zgromadzone na polu  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz zyskuje pieniądze zgromadzone na polu a wartość licznika "musik" zostaje ustawione na 0  \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 17 \\
+ \hline
+ Tytuł  & Licytacja. \\
+\hline
+Aktor  & Bank,Gracze  \\
+\hline
+Warunki wejściowe  & Gracz nie zdecydował się na zakup pola.  \\
+\hline
+Przebieg  & 1. Bank rozpoczyna licytację pola od połowy kwoty, za którą normalnie można zakupić pole. \\ 
+& 2. Gracze decydując się wziąć udział w licytacji.\\ 
+& 3. Licytacja zaczyna się zgodnie z kolejnością używaną podczas zwykłej kolejki. \\
+& 4.Licytacja trwa dopóki zostanie jeden licytujący. \\ 
+
+   
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Ostatni licytujący płaci kwotę, którą podał w licytacji i zdobywa pole.\\
+
+  
+\hline
+
+Zakończenie alternatywne nr.1  & Gracz nie ma wystarczającej ilości pieniędzy, żeby zapłacić. Scenariusz zaczyna się od nowa lub pole nie zostaje sprzedane i zostaje tak jak było. \\
+\hline
+Zakończenie alternatywne nr2 & Żaden gracz nie chce brać udziału w licytacji. Licytacja nie odbywa się.\\ 
+
+
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 18 \\
+ \hline
+ Tytuł  & Więzienie. \\
+\hline
+Aktor  & System,Gracze  \\
+\hline
+Warunki wejściowe  & Gracz trzy razy pod rząd wyrzucił identyczną liczbę oczek, zatrzymał się na polu idziesz do więzienia lub wylosował kartę idziesz do więzienia.
+.  \\
+\hline
+Przebieg  & 1.System przesuwa pionek gracz do więzienia, w tym czasie dalej może pobierać opłaty za sowej nieruchomości. \\
+& 2.Gracz spędza dwie kolejki bez możliwości rzutu kostką. \\ 
+
+   
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Po upłynięciu dwóch kolejek gracz wraca do dalszej gry.pole.\\
+
+  
+\hline
+
+
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 19 \\
+ \hline
+ Tytuł  & Karta wyjścia z więzienia \\
+\hline
+Aktor  & System,Gracze  \\
+\hline
+Warunki wejściowe  & Gracz wylosował z kart szan kartę pod tytułem “Wyjście z więzienia”.  \\
+\hline
+Przebieg  & 1. Gracz stanął na polu “Idziesz do więzienia. Wylosował kartę “Idziesz do więzienia”.Wyrzucił 3 raz pod rząd taką samą liczbę oczek. \\
+& 2. Używa karty “Wyjdź z więzienia”.. \\ 
+
+   
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz nie idzie do więzienia, kontynuuje grę z pola “Odwiedziny w więzieniu”.\\
+
+  
+\hline
+
+
+
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 20 \\
+ \hline
+ Tytuł  & Koniec gry \\
+\hline
+Aktor  & System,Gracze  \\
+\hline
+Warunki wejściowe  & Gracz rozpoczął grę.  \\
+\hline
+Przebieg  & 1. Graczowi skończyły się pieniądze.\\
+& 2.Nie może nic wymienić, ani dostać pożyczki z banku.\\ 
+
+   
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz kończy rozgrywkę.\\
+\hline
+Zakończenie alternatywne nr.1  & Gdy zostanie ostatni gracz na planszy to wygrywa.
+  \\
+\hline
+Zakończenie alternatywne nr.2 & Po wyznaczonym czasie gracze wybierają opcję przelicz. System licz fundusze każdego gracza, gracz z największymi funduszami wygrywa grę. \\
+
+ 
+\hline
+MVP & \\
+\hline
+
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 21 \\
+ \hline
+ Tytuł  & Brak budynków \\
+\hline
+Aktor  & System  \\
+\hline
+Warunki wejściowe  & Budynki = 0  \\
+\hline
+Przebieg  & Nie ma wolnych budynków  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz nie ma możliwości zakupu budynku  \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+ Nr. Scenariusza & 22 \\
+ \hline
+ Tytuł  & Brak pieniędzy \\
+\hline
+Aktor  & System, Bank  \\
+\hline
+Warunki wejściowe  & Dostępne pieniądzę w banku = 0  \\
+\hline
+Przebieg  & Nie ma pieniędzy w banku  \\
+\hline
+   &    \\
+\hline
+Zakończenie poprawne  & Gracz nie otrzymuje żadnych pieniędzy  \\
+\hline
+MVP & \\
+\hline
+\end{tabularx}
+
+\bigbreak
+
+\section{Szacunkowy czas zadań}
+
+Stworzenie banku 7h\newline
+Stworzenie Menu 6h\newline
+Stworzenie startu gry 2h\newline
+Stworzenie systemu poruszania 12h\newline
+Stworzenie systemu rzutu kostką 3h\newline
+Stworzenie systemu nadpisywania wartości konta 2h\newline
+Stworzenie systemu pożyczek 2h\newline
+Stworzenie systemu spłat 2h\newline
+Stworzenie systemu kupowania miast 5h\newline
+Stworzenie systemu sprzedawania miast 4h\newline
+Stworzenie systemu kupowania budynków 8h\newline
+Stworzenie systemu sprzedawania budynków 5h\newline
+Stworzenie systemu więzieinia 4h\newline
+Stworzenie systemu losowania kart szans 8h\newline
+Zachowywania karty wyjscia z więzienia 6h\newline
+Opracowanie pola darmowego parkingu 4h\newline
+Stworzenie interfejsu podglądu zaspobów 3h\newline
+Dodanie możliwości podglądu kart miast 6h\newline
+System ograniczonej ilości zasobów (domki, hotele, pieniądze) 4h\newline
+System podwójnego i potrójnego rzutu 4h\newline
+System opłaty za stanięcie na określonym polu 2h\newline
+System opłaty za stanięcie na polu innego gracza - (mnożnik w zależności od cany na karcie, posiadanych budowli i za całość osiedla) 6h\newline
+Dodanie audio 6h\newline
+Stworzenie Końca gry 8h\newline
+Stworzenie pól szans i kas społecznych 8h\newline
+Stworzenie skarbonki do darmowego parkingu, która gromadzi pieniądze z kart szans i pól opłat 4h\newline
+Stowrzenie systemu kolejki 12h\newline
+Stworzenie system wyboru 7h\newline
+Stworzenie Interfejsu 8h\newline
+Przejście przez start 3h\newline
+Stworzenie modeli 8h\newline
+Stworzenie treści kart szans 3h\newline
+Stworzenie treści kart społecznych 3h\newline
+Stworzenie treści kart pól 2h\newline
+Połączenie wszystkich elementów 8h\newline
+Testy 10h \newline
+Poprawka po testach 10h\newline
+Dokończenie dokumentacji 2h\newline
+
+
+
+
+
+
+
+\section{Implementacja}
+\section{Testowanie}
+\section{Podsumowanie i bilans}
+\section{Bibliografia}
+\section{Kod}
+
+
+
+\end{document}
